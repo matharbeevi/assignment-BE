@@ -18,7 +18,7 @@ export class GstAddComponent implements OnInit {
     this.angForm = this.fb.group({
       reference: ['', Validators.required ],
       account_no: ['', Validators.required ],
-      description: ['', Validators.required ],
+      description: [''],
       start_bal: [''],
       mutation: [''],
       end_bal: ['', Validators.required]

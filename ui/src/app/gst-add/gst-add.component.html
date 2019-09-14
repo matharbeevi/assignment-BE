@@ -23,29 +23,16 @@
         <label class="col-md-4">Description </label>
         <input type="text" class="form-control" formControlName="description" #description />
       </div>
-      <div *ngIf="angForm.controls['description'].invalid && (angForm.controls['description'].dirty || angForm.controls['description'].touched)" class="alert alert-danger">
-        <div *ngIf="angForm.controls['description'].errors.required">
-          Description is required.
-        </div>
-      </div>
       <div class="form-group">
         <label class="col-md-4">Start Balance</label>
         <input type="text" class="form-control" formControlName="start_bal" #start_bal />
       </div>
-      <div *ngIf="angForm.controls['start_bal'].invalid && (angForm.controls['start_bal'].dirty || angForm.controls['start_bal'].touched)" class="alert alert-danger">
-        <div *ngIf="angForm.controls['start_bal'].errors.required">
-          Account Number is required.
-        </div>
-      </div>
+      
       <div class="form-group">
         <label class="col-md-4">Mutation</label>
         <input type="text" class="form-control" formControlName="mutation" #mutation />
       </div>
-      <div *ngIf="angForm.controls['mutation'].invalid && (angForm.controls['mutation'].dirty || angForm.controls['mutation'].touched)" class="alert alert-danger">
-        <div *ngIf="angForm.controls['mutation'].errors.required">
-          Account Number is required.
-        </div>
-      </div>
+      
       
       <div class="form-group">
         <label class="col-md-4">End Balance</label>
@@ -57,7 +44,7 @@
         </div>
       </div>
       <div class="form-group">
-        <button (click)="addBusiness(person_name.value, account_no.value, description.value)"
+        <button (click)="addBusiness(reference.value, account_no.value, end_bal.value)"
         [disabled]="angForm.pristine || angForm.invalid" 
         class="btn btn-primary">Add Transaction</button>
       </div>

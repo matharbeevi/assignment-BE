@@ -27,15 +27,21 @@ conn.connect((err) =>{
 
  
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false }));
+//app.use(bodyParser.urlencoded({extended: false }));
  
 app.use(cors());
- 
+app.use(express.static(path.join(__dirname,'../dist/assignment-BE')));
 app.use(function(err, req, res, next) {
 return res.send({ "statusCode": util.statusCode.ONE, "statusMessage": util.statusMessage.SOMETHING_WENT_WRONG });
 });
  
 //app.use('/article', articleRoute);
+
+var version=process.env.version || "1.0"
+app.get('/getversion',function(req,res){
+    console.log('Version '+version);
+    res.status(200).json({version:version})
+  });
 
 //route for homepage
 app.get('/transac',(req, res) => {
@@ -51,7 +57,7 @@ app.get('/transac',(req, res) => {
     });
      
     //route for insert data
-    app.post('/add',(req, res) => {
+    app.post('/business/add',(req, res) => {
       let data = {
         reference: req.body.reference, 
         account_no: req.body.account_no, 
@@ -78,11 +84,12 @@ next();
  
 /*first API to check if server is running*/
 app.get('*', (req, res) => {
-res.sendFile(path.join(__dirname, '../server/client/dist/index.html'));
+res.sendFile(path.join(__dirname, '../dist/index.html'));
 })
  
+const port = process.env.PORT || 4000;
  
-server.listen(3000,function(){
-console.log('app listening on port: 3000');
+server.listen(port,function(){
+console.log('app listening on port: '+port);
 });
  
