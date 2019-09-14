@@ -1,0 +1,66 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="angForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">Transaction Reference</label>
+        <input type="text" class="form-control" formControlName="reference" #reference/>
+      </div>
+      <div *ngIf="angForm.controls['reference'].invalid && (angForm.controls['reference'].dirty || angForm.controls['reference'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['reference'].errors.required">
+          Transaction Reference is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Account Number</label>
+        <input type="text" class="form-control" formControlName="account_no" #account_no />
+      </div>
+      <div *ngIf="angForm.controls['account_no'].invalid && (angForm.controls['account_no'].dirty || angForm.controls['account_no'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['account_no'].errors.required">
+          Account Number is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Description </label>
+        <input type="text" class="form-control" formControlName="description" #description />
+      </div>
+      <div *ngIf="angForm.controls['description'].invalid && (angForm.controls['description'].dirty || angForm.controls['description'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['description'].errors.required">
+          Description is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Start Balance</label>
+        <input type="text" class="form-control" formControlName="start_bal" #start_bal />
+      </div>
+      <div *ngIf="angForm.controls['start_bal'].invalid && (angForm.controls['start_bal'].dirty || angForm.controls['start_bal'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['start_bal'].errors.required">
+          Account Number is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Mutation</label>
+        <input type="text" class="form-control" formControlName="mutation" #mutation />
+      </div>
+      <div *ngIf="angForm.controls['mutation'].invalid && (angForm.controls['mutation'].dirty || angForm.controls['mutation'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['mutation'].errors.required">
+          Account Number is required.
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="col-md-4">End Balance</label>
+        <input type="text" class="form-control" formControlName="end_bal" #end_bal />
+      </div>
+      <div *ngIf="angForm.controls['end_bal'].invalid && (angForm.controls['end_bal'].dirty || angForm.controls['end_bal'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['end_bal'].errors.required">
+          End Balance is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <button (click)="addBusiness(person_name.value, account_no.value, description.value)"
+        [disabled]="angForm.pristine || angForm.invalid" 
+        class="btn btn-primary">Add Transaction</button>
+      </div>
+    </form>
+  </div>
+</div>
