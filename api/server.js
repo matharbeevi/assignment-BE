@@ -51,12 +51,22 @@ app.get('/transac',(req, res) => {
     });
      
     //route for insert data
-    app.post('/save',(req, res) => {
-      let data = {product_name: req.body.product_name, product_price: req.body.product_price};
-      let sql = "INSERT INTO product SET ?";
+    app.post('/add',(req, res) => {
+      let data = {
+        reference: req.body.reference, 
+        account_no: req.body.account_no, 
+        description: req.body.description, 
+        start_bal: req.body.start_bal, 
+        mutation: req.body.mutation, 
+        end_bal: req.body.end_bal};
+      let sql = "INSERT INTO transaction SET ?";
       let query = conn.query(sql, data,(err, results) => {
-        if(err) throw err;
-        res.redirect('/');
+        if(err){
+            res.status(400).json(err);
+        } else {
+            console.log('results', results);
+            res.status(200).json(results);
+        }
       });
     });
      
